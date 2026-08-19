@@ -1,0 +1,88 @@
+{
+  "features": [
+    "pclass",
+    "sex",
+    "age",
+    "sibsp",
+    "parch",
+    "fare",
+    "embarked",
+    "title",
+    "family_size",
+    "is_alone",
+    "has_cabin",
+    "deck",
+    "fare_per_person",
+    "age_group"
+  ],
+  "categorical_columns": [
+    "sex",
+    "embarked",
+    "title",
+    "deck",
+    "age_group"
+  ],
+  "categorical_classes": {
+    "sex": [
+      "female",
+      "male"
+    ],
+    "embarked": [
+      "C",
+      "Q",
+      "S"
+    ],
+    "title": [
+      "Master",
+      "Miss",
+      "Mr",
+      "Mrs",
+      "Officer",
+      "Royalty"
+    ],
+    "deck": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "T",
+      "U"
+    ],
+    "age_group": [
+      "Adult",
+      "Child",
+      "Senior",
+      "Teen",
+      "YoungAdult"
+    ]
+  },
+  "target": "survived",
+  "best_model": "XGBoost",
+  "production_model": "XGBoost",
+  "dl_input_dim": 14,
+  "dl_hidden_dims": [
+    64,
+    32,
+    16
+  ],
+  "title_map": {
+    "Mlle": "Miss",
+    "Ms": "Miss",
+    "Mme": "Mrs",
+    "Lady": "Royalty",
+    "Countess": "Royalty",
+    "the Countess": "Royalty",
+    "Sir": "Royalty",
+    "Don": "Royalty",
+    "Dona": "Royalty",
+    "Jonkheer": "Royalty",
+    "Capt": "Officer",
+    "Col": "Officer",
+    "Major": "Officer",
+    "Dr": "Officer",
+    "Rev": "Officer"
+  }
+}

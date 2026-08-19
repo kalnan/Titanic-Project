@@ -1,0 +1,30 @@
+services:
+  # ---- FastAPI backend (served by gunicorn + uvicorn workers) ----
+  - type: web
+    name: titanic-backend
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app -k uvicorn.workers.UvicornWorker -c gunicorn_conf.py
+    envVars:
+      - key: ALLOWED_ORIGINS
+        value: https://titanic-frontend.onrender.com
+      - key: PYTHON_VERSION
+        value: 3.11.9
+
+  # ---- React frontend (static site) ----
+  - type: web
+    name: titanic-frontend
+    runtime: static
+    plan: free
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: build
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://titanic-backend.onrender.com
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
